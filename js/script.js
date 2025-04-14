@@ -117,7 +117,7 @@ rippleBtn.addEventListener("mouseover", function (e) {
 
 const btn = document.getElementById('send-message');
 
-document.getElementById('form')
+document.getElementById('contactForm')
  .addEventListener('submit', function(event) {
    event.preventDefault();
 
