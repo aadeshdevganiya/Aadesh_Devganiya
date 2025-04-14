@@ -125,26 +125,24 @@ var preogressbar = document.getElementById("preogressbar")
         }
      
 
-const btn = document.getElementById('sendMessage');
+const btn = document.getElementById('buttonn');
 
-document.getElementById('contactForm').addEventListener('submit', function(event) {
-  event.preventDefault(); // Prevent the default form submission
+document.getElementById('form')
+ .addEventListener('submit', function(event) {
+   event.preventDefault();
 
-  // Disable the button while the email is being sent
-  btn.querySelector("span").innerText = 'Sending...';
+   btn.value = 'Sending...';
 
-  // Your EmailJS service ID and template ID (Replace with actual IDs)
-  const serviceID = 'service_bo5gc0f'; // Your Service ID
-  const templateID = 'template_bxt1t6l'; // Your Template ID
+   const serviceID = 'service_bo5gc0f';
+   const templateID = 'template_bxt1t6l';
 
-  // Send the form data using EmailJS
-  emailjs.sendForm(serviceID, templateID, this)
+   emailjs.sendForm(serviceID, templateID, this)
     .then(() => {
-      btn.querySelector("span").innerText = 'Send Email'; // Re-enable button
-      alert('Sent!'); // Show success message
+      btn.value = 'Send Email';
+      alert('Sent!');
     }, (err) => {
-      btn.querySelector("span").innerText = 'Send Email'; // Re-enable button
-      alert('Failed to send email: ' + JSON.stringify(err)); // Show error message
+      btn.value = 'Send Email';
+      alert(JSON.stringify(err));
     });
 });
 
