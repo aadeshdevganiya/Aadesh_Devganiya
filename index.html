@@ -385,27 +385,30 @@
         })
 
 
-        (function() {
-      emailjs.init('YOUR_PUBLIC_KEY');
-    })();
+       // EmailJS setup
+const form = document.getElementById('contactForm');
 
-    document.getElementById('contactForm').addEventListener('submit', function (e) {
-      e.preventDefault();
-
-      // Get form data
-      const form = e.target;
-
-      // Send email using EmailJS
-      emailjs.sendForm('service_bo5gc0f', 'template_bxt1t6l', form)
-        .then(
-          () => {
-            alert('SUCCESS!');
-          },
-          (error) => {
-            alert('FAILED...', error.text);
-          }
-        );
+// Function to handle form submission
+form.addEventListener('submit', function (e) {
+  e.preventDefault(); // Prevent form from submitting the default way
+  
+  // Getting values from form fields
+  const user_name = document.getElementById('user_name').value;
+  const user_email = document.getElementById('user_email').value;
+  const subject = form.querySelector('input[type="text"]').value;
+  const message = document.getElementById('message').value;
+  
+  // Send email using EmailJS
+  emailjs.sendForm('service_bo5gc0f', 'template_bxt1t6l', form, 'mBI9ag7ugqs52Ol6S')
+    .then(function(response) {
+      console.log('SUCCESS!', response);
+      alert('Message sent successfully!');
+    }, function(error) {
+      console.log('FAILED...', error);
+      alert('Failed to send the message.');
     });
+});
+
     </script>
 
 </body>
