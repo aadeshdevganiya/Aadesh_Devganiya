@@ -117,24 +117,27 @@ rippleBtn.addEventListener("mouseover", function (e) {
 
 const btn = document.getElementById('sendMessage');
 
-document.getElementById('contactForm')
- .addEventListener('submit', function(event) {
-   event.preventDefault();
+document.getElementById('contactForm').addEventListener('submit', function(event) {
+  event.preventDefault(); // Prevent the default form submission
 
-   btn.value = 'Sending...';
+  // Disable the button while the email is being sent
+  btn.querySelector("span").innerText = 'Sending...';
 
-   const serviceID = 'service_bo5gc0f';
-   const templateID = 'template_bxt1t6l';
+  // Your EmailJS service ID and template ID (Replace with actual IDs)
+  const serviceID = 'service_bo5gc0f'; // Your Service ID
+  const templateID = 'template_bxt1t6l'; // Your Template ID
 
-   emailjs.sendForm(serviceID, templateID, this)
+  // Send the form data using EmailJS
+  emailjs.sendForm(serviceID, templateID, this)
     .then(() => {
-      btn.value = 'Send Email';
-      alert('Sent!');
+      btn.querySelector("span").innerText = 'Send Email'; // Re-enable button
+      alert('Sent!'); // Show success message
     }, (err) => {
-      btn.value = 'Send Email';
-      alert(JSON.stringify(err));
+      btn.querySelector("span").innerText = 'Send Email'; // Re-enable button
+      alert('Failed to send email: ' + JSON.stringify(err)); // Show error message
     });
 });
+
 
 
 
