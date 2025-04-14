@@ -284,20 +284,20 @@
                 </div>
                 <div class="column right wow animate__animated animate__fadeInRight">
                     <div class="text">Message me</div>
-                    <form action="#">
+                    <form action="#" id="contactForm">
                         <div class="fields">
                             <div class="field name">
-                                <input type="text" placeholder="Name" required>
+                                <input type="text" placeholder="Name" id="user_name" required>
                             </div>
                             <div class="field email">
-                                <input type="email" placeholder="Email" required>
+                                <input type="email" placeholder="Email" id="user_email" required>
                             </div>
                         </div>
                         <div class="field">
                             <input type="text" placeholder="Subject" required>
                         </div>
                         <div class="field textarea">
-                            <textarea cols="30" rows="10" placeholder="Message.." required></textarea>
+                            <textarea cols="30" rows="10" id="message" placeholder="Message.." required></textarea>
                         </div>
 
                         <button class="btn btn--liquidBtn" type="submit">
@@ -383,6 +383,29 @@
         window.addEventListener("load", function () {
             loader.style.display = "none";
         })
+
+
+        (function() {
+      emailjs.init('YOUR_PUBLIC_KEY');
+    })();
+
+    document.getElementById('contactForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      // Get form data
+      const form = e.target;
+
+      // Send email using EmailJS
+      emailjs.sendForm('service_bo5gc0f', 'YOUR_TEMPLATE_ID', form)
+        .then(
+          () => {
+            alert('SUCCESS!');
+          },
+          (error) => {
+            alert('FAILED...', error.text);
+          }
+        );
+    });
     </script>
 
 </body>
