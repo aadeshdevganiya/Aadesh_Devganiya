@@ -342,6 +342,34 @@
 
     <!-- scroll bar js  -->
     <script type="text/javascript">
+           $('.carousel').owlCarousel({
+            margin: 20,
+            loop: true,
+            autoplay: true,
+            autoplayTimeOut: 2000,
+            autoplayHoverPause: true,
+            responsive: {
+                500: {
+                    items: 1,
+                    nav: false
+                },
+                600: {
+                    items: 1,
+                    nav: false
+                },
+                1000: {
+                    items: 3,
+                    nav: false
+                }
+            }
+        });
+
+        //  pre loader js  
+        var loader = document.getElementById("preloader");
+
+        window.addEventListener("load", function () {
+            loader.style.display = "none";
+        })
        // EmailJS setup
       emailjs.init('mBI9ag7ugqs52Ol6S')
     </script>
