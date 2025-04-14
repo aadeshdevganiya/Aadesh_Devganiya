@@ -1,3 +1,4 @@
+
 new WOW().init();
 
 let cursor = document.querySelector('.cursor');
@@ -113,7 +114,43 @@ rippleBtn.addEventListener("mouseover", function (e) {
   }, 1000);
 });
 
+var preogressbar = document.getElementById("preogressbar")
+        var percent = document.getElementById("percent")
 
+        var totalHeight = document.body.scrollHeight - window.innerHeight;
+        window.onscroll = function () {
+            var progress = (window.pageYOffset / totalHeight) * 100;
+            preogressbar.style.height = progress + "%";
+            percent.innerHTML = "Page Scrolled " + Math.round(progress) + "%"
+        }
+        $('.carousel').owlCarousel({
+            margin: 20,
+            loop: true,
+            autoplay: true,
+            autoplayTimeOut: 2000,
+            autoplayHoverPause: true,
+            responsive: {
+                500: {
+                    items: 1,
+                    nav: false
+                },
+                600: {
+                    items: 1,
+                    nav: false
+                },
+                1000: {
+                    items: 3,
+                    nav: false
+                }
+            }
+        });
+
+        //  pre loader js  
+        var loader = document.getElementById("preloader");
+
+        window.addEventListener("load", function () {
+            loader.style.display = "none";
+        })
 
 const btn = document.getElementById('sendMessage');
 
